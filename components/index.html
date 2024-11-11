@@ -12,7 +12,6 @@
       box-sizing: border-box;
     }
 
-    /* Global Styles */
     html {
       font-size: 5vmin;
       font-family: 'Serif', serif;
@@ -31,7 +30,6 @@
       overflow: hidden;
     }
 
-    /* Enhanced Background with Dynamic Gradient */
     .background {
       position: absolute;
       top: 0;
@@ -45,19 +43,17 @@
       z-index: -1;
     }
 
-    /* Particle Effect Background */
     .particle {
       position: absolute;
       border-radius: 50%;
       background-color: hsla(200, 100%, 70%, 0.8);
       pointer-events: none;
-      animation: particleAnimation 6s ease-out forwards; /* Slower fade */
+      animation: particleAnimation 6s ease-out forwards; 
       opacity: 1;
-      width: 60px;  /* Bigger particle size */
-      height: 60px; /* Bigger particle size */
+      width: 60px;  
+      height: 60px; 
     }
 
-    /* Particle Animation */
     @keyframes particleAnimation {
       0% {
         transform: translateX(0) translateY(0);
@@ -65,11 +61,10 @@
       }
       100% {
         transform: translateX(var(--move-x)) translateY(var(--move-y));
-        opacity: 0; /* Fade away slower */
+        opacity: 0; 
       }
     }
 
-    /* Background Gradient Movement */
     @keyframes gradientMovement {
       0% {
         background-position: 0% 0%;
@@ -79,7 +74,6 @@
       }
     }
 
-    /* Particle Animation */
     @keyframes gradientAnimation {
       0% {
         background-position: 0% 0%;
@@ -92,7 +86,6 @@
       }
     }
 
-    /* Bubbles as Buttons */
     .bubbles {
       display: flex;
       gap: 4rem;
@@ -136,7 +129,6 @@
       transform: scale(1);
     }
 
-    /* Editable Text Above Bubbles */
     .content {
       text-align: center;
       position: absolute;
@@ -159,7 +151,6 @@
       text-shadow: 0 0 20px rgba(0, 255, 255, 0.8);
     }
 
-    /* Bottom-right editable text */
     .editable-bottom-right {
       position: absolute;
       bottom: 20px;
@@ -195,15 +186,13 @@
 </head>
 <body>
 
-  <!-- Background Gradient with Animation -->
   <div class="background"></div>
 
-  <!-- Editable Text Above the Bubbles -->
   <div class="content">
-    <div class="editable-text" contenteditable="true">This website works as a redirect</div>
+    <div class="editable-text" contenteditable="true">This website is designed to function as a redirection</div>
+    <div class="editable-text" contenteditable="true">Main repos are pinned, the other ones are located in the repos section</div>
   </div>
 
-  <!-- Bubbles (Clickable Buttons) -->
   <div class="bubbles">
     <div class="bubble" onclick="window.location.href='https://github.com/anvrxi/AboutMe';">
       <p>Learn about me on a personal and professional level</p>
@@ -213,80 +202,64 @@
     </div>
   </div>
 
-  <!-- Editable Text in the Bottom-Right Corner -->
   <div class="editable-bottom-right" contenteditable="true">tap for more particels!</div>
 
   <script>
-    // Function to create particles at the clicked position
     function createClickParticle(event) {
       const particle = document.createElement('div');
       particle.classList.add('particle');
   
-      // Set random movement direction for the particle (X and Y axes)
       const moveX = (Math.random() * 200 - 100) + 'px';
       const moveY = (Math.random() * 200 - 100) + 'px';
       particle.style.setProperty('--move-x', moveX);
       particle.style.setProperty('--move-y', moveY);
   
-      // Set the position of the particle to where the user clicked
       const x = event.clientX;
       const y = event.clientY;
-      particle.style.left = `${x - 30}px`; // Offset by half the width for centering
-      particle.style.top = `${y - 30}px`; // Offset by half the height for centering
+      particle.style.left = `${x - 30}px`; 
+      particle.style.top = `${y - 30}px`; 
   
-      // Append particle to the body
       document.body.appendChild(particle);
   
-      // Remove the particle after it fades out
       setTimeout(() => {
         particle.remove();
-      }, 6000); // Same duration as the particle animation
+      }, 6000);
     }
   
-    // Add event listener for clicks to create particles
     document.body.addEventListener('click', createClickParticle);
   
-    // Function to create random particles at random positions
     function createRandomParticle() {
       const particle = document.createElement('div');
       particle.classList.add('particle');
       
-      // Randomize the position of the particle within the body
       const randomX = Math.random() * window.innerWidth;
       const randomY = Math.random() * window.innerHeight;
       particle.style.left = `${randomX}px`;
       particle.style.top = `${randomY}px`;
   
-      // Random movement direction for the particle (X and Y axes)
       const moveX = (Math.random() * 200 - 100) + 'px';
       const moveY = (Math.random() * 200 - 100) + 'px';
       particle.style.setProperty('--move-x', moveX);
       particle.style.setProperty('--move-y', moveY);
   
-      // Append particle to the body
       document.body.appendChild(particle);
   
-      // Remove the particle after it fades out
       setTimeout(() => {
         particle.remove();
-      }, 6000); // Same duration as the particle animation
+      }, 6000); 
     }
   
-    // Create random particles every 2 seconds
     setInterval(createRandomParticle, 2000);
   
-    // Function to create constant faster-moving particles in the background
     function createConstantParticles() {
       const particle = document.createElement('div');
       particle.classList.add('particle');
   
-      // Set a faster movement speed for constant particles
-      const moveX = (Math.random() * 400 - 200) + 'px'; // Faster speed
-      const moveY = (Math.random() * 400 - 200) + 'px'; // Faster speed
+      const moveX = (Math.random() * 400 - 200) + 'px'; 
+      const moveY = (Math.random() * 400 - 200) + 'px'; 
       particle.style.setProperty('--move-x', moveX);
       particle.style.setProperty('--move-y', moveY);
   
-      // Randomize the position of the particle within the body
       const randomX = Math.random() * window.innerWidth;
       const randomY = Math.random() * window.innerHeight;
       particle.style.left = `${randomX}px`;
@@ -295,18 +268,15 @@
       // Append particle to the body
       document.body.appendChild(particle);
   
-      // Remove the particle after it fades out, but let it stay for a longer duration
       setTimeout(() => {
         particle.remove();
-      }, 20000); // Constant particles stay for a longer time (10 seconds)
+      }, 20000); 
     }
   
-    // Create 5 constant particles immediately when the page loads
     for (let i = 0; i < 8; i++) {
       createConstantParticles();
     }
   
-    // Create constant particles every 2 seconds (can be adjusted)
     setInterval(createConstantParticles, 500);
   </script>
 
